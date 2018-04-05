@@ -8,7 +8,7 @@ use std::io::{Read, Seek, SeekFrom};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct Test {
   number: u32,
-  boolean: bool
+  boolean: bool,
 }
 
 fn cleanup(s: &str) {

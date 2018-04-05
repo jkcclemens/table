@@ -1,3 +1,6 @@
+#![feature(box_syntax)]
+#![cfg_attr(test, feature(test))]
+
 //! A file-based, positional collection.
 //!
 //! `table` keeps only an index reference in memory at all times. Data is read from the disk on
@@ -15,11 +18,18 @@ extern crate failure_derive;
 extern crate failure;
 extern crate rmp_serde as serde_msgpack;
 extern crate serde;
+#[cfg(test)]
+#[macro_use]
+extern crate serde_derive;
 
 pub mod error;
 pub mod iter;
 pub mod typed;
 pub mod untyped;
+#[cfg(test)]
+extern crate test as std_test;
+#[cfg(test)]
+mod test;
 
 pub use self::typed::TypedTable;
 pub use self::untyped::Table;

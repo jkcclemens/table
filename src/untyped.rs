@@ -157,6 +157,9 @@ impl Table {
     // relative seek from the end of the file)
     // let start: u64 = self.header[..self.header.len()].iter().sum();
     let start = self.len - len;
+
+    let mut data_file = self.data_file.borrow_mut();
+
     // seek to the start
     data_file.seek(SeekFrom::Start(start)).map_err(Error::Io)?;
 

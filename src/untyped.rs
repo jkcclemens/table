@@ -156,8 +156,7 @@ impl Table {
     // calculate start point (note that in order to truncate, we have to do this, so we can't just
     // relative seek from the end of the file)
     // let start: u64 = self.header[..self.header.len()].iter().sum();
-    let start = self.len - self.header[self.header.len() - 1];
-    let mut data_file = self.data_file.borrow_mut();
+    let start = self.len - len;
     // seek to the start
     data_file.seek(SeekFrom::Start(start)).map_err(Error::Io)?;
 
